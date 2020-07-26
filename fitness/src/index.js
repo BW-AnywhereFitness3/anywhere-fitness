@@ -4,13 +4,29 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter as Router} from 'react-router-dom'
+import { applyMiddleware, createStore } from 'redux'
+import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
+import logger from 'redux-logger'
+import rootReducer from './reducer'
+import { createBrowserHistory } from 'history'
+
+const store = createStore(
+  rootReducer,
+  applyMiddleware(thunk, logger)
+);
+
+const history = createBrowserHistory()
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-    <App />
-    </Router>
+   <Provider store={store}>
+        <Router>
+        <App />
+        </Router>
+    </Provider>
   </React.StrictMode>,
+
   document.getElementById('root')
 );
 
