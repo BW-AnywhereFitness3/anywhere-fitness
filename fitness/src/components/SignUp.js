@@ -1,9 +1,27 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import axios from 'axios'
 
 function SignUp (){
   const { register, handleSubmit, errors } = useForm()
-  const onSubmit = regData => console.log(regData)
+  const onSubmit = regData => {
+    axios.post('https://afitness.herokuapp.com/api/auth/register',{
+      role: Number(regData.role),
+      first_name: 'none',
+      last_name: 'none',
+      email: regData.email,
+      username: regData.username,
+      password: regData.password
+    })
+    .then(res => {
+      console.log(res.data)
+    })
+    .catch(err => {
+      console.log(err)
+      debugger
+    })
+  }
+
 
   return(
     <div className='signUp'>
@@ -42,8 +60,8 @@ function SignUp (){
           validate: value => value !== 'Select a Role' || 'Role required'
         })}>
           <option disabled>Select a Role</option>
-          <option value='instructor'>Instructor</option>
-          <option value='student'>Student</option>
+          <option value={1}>Instructor</option>
+          <option value={2}>Student</option>
         </select>
         <button>Submit</button>
         {errors.username && <p id='usernameError'>{errors.username.message}</p>}
