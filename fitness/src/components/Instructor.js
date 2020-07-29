@@ -8,6 +8,7 @@ import Delete from './Delete';
 
 
 
+
 function Instructor (props) {
 
     const { newClass } = props
