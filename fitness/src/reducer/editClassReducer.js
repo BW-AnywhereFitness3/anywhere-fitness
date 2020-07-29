@@ -2,7 +2,7 @@ import {
     EDIT_CLASS_START,
     EDIT_CLASS_SUCCESS,
     EDIT_CLASS_FAIL
-} from '../actions/editNewClass'
+} from '../actions/editClass'
 
 const initalState = {
     classes: [],
