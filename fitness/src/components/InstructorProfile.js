@@ -9,7 +9,6 @@ import AddClass from './AddClass'
 
 
 
-
 const InstructorProfile = (props) => {
 
     const [ userClasses, setUserClasses ] = useState([])
@@ -42,9 +41,9 @@ const InstructorProfile = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-    edit: state.editClassReducer.edit,
-    delete: state.deleteClassReducer.delete,
-    add: state.addClassReducer.add
+    edit: state.editClassReducer.newClass,
+    delete: state.deleteClassReducer.newClass,
+    add: state.addClassReducer.newClass
     }
 }
 

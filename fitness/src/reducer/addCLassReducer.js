@@ -29,7 +29,7 @@ export const addClassReducer = (state = initalState, action) => {
                 ],
                 isFetching: false,
                 error: '',
-                success_message: 'Story added! You can add another story now, or click the close button'
+                success_message: 'Class added! You can add another class now, or click the close button'
             };
         case ADD_CLASS_FAIL:
             return {

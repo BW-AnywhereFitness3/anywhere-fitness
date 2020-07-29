@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
-import { editNewClass } from '../actions/editNewClass'
+import { editNewClass } from '../actions/editClass'
 
 import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@material-ui/icons/Edit'

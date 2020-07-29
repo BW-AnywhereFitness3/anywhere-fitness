@@ -5,7 +5,8 @@ import axios from 'axios'
 function SignUp (){
   const { register, handleSubmit, errors } = useForm()
   const onSubmit = regData => {
-    axios.post('https://afitness.herokuapp.com/api/auth/register',{
+    axios.post('httpherokuapp.com/api/auth/registers://afitness.',{
+      id:'',
       role: Number(regData.role),
       first_name: 'none',
       last_name: 'none',

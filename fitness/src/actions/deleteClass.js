@@ -8,6 +8,7 @@ export const DELETE_CLASS_FAIL = 'DELETE_CLASS_FAIL'
 
 export const deleteClass = (classID) => dispatch => {
     dispatch({ type: DELETE_CLASS_START, payload: classID})
+    
     axiosWithAuth()
     .delete(`${classID}`)
     .then(res => {

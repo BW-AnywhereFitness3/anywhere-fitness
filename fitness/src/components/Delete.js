@@ -1,68 +1,25 @@
-import React, { useState } from 'react'
+ import React, { useState } from 'react'
+import { deleteClass }  from '../actions/deleteClass'
 import { connect } from 'react-redux'
 
-import { editNewClass } from '../actions/editNewClass'
-
 import IconButton from '@material-ui/core/IconButton';
-import EditIcon from '@material-ui/icons/Edit'
+import DeleteIcon from '@material-ui/icons/Delete';
 
-const Edit = props => {
-   const [ editing, setEditing ] = useState(false)
-   const [ classEdit, setClassEdit ] = useState(props.newClass)
 
-   const onInputChange = evt => {
-    const name = evt.target.name
-    const value = evt.target.value
+const Delete = (props) => {
 
-    setClassEdit({
-        ...classEdit,
-        [name]: value 
-    })
-  }
+    
+    const [ classDelete ] = useState(props.newClass)
 
-  const edit = e => {
-    e.preventDefault();
-    setEditing(false);
-    props.editClass(classEdit, classEdit.id);
+    const deleteClass = () => {
+        props.deleteClass(classDelete.id);
+    }
+    return (
+   <IconButton onClick={() => { deleteClass() }}>
+        <DeleteIcon/>
+  </IconButton>
+    )
+
 }
 
-    return (
-      <div>
-        <IconButton onClick={() => {setEditing(true)}}>
-          <EditIcon/>
-        </IconButton>
-        { editing && (
-                <form>
-                  <input 
-                    name='title'
-                    value={classEdit.title}
-                    onChange={onInputChange}/>
-                    <input 
-                    name='location'
-                    value={classEdit.location}
-                    onChange={onInputChange}/>
-                    <input 
-                    name='date'
-                    value={classEdit.date}
-                    onChange={onInputChange}/>
-                    <input 
-                    name='description'
-                    value={classEdit.description}
-                    onChange={onInputChange}/>
-                    <input 
-                    name='storyImage'
-                    value={classEdit.storyImage}
-                    onChange={onInputChange}/>
-                  
-                  <button onClick={edit} 
-                  className="button">Save Edits</button>
-              </form>
-        )
-        }
-        
-        
-      </div>
-    );
-  };
-
-  export default connect(null, { editNewClass })(Edit);
+export default connect(null, { deleteClass })(Delete);
