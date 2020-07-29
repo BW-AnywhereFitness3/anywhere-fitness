@@ -5,10 +5,6 @@ import Instructor from "./Instructor"
 import AddClass from './AddClass'
 
 
-
-
-
-
 const InstructorProfile = (props) => {
 
     const [ userClasses, setUserClasses ] = useState([])
@@ -16,7 +12,7 @@ const InstructorProfile = (props) => {
     useEffect(() => {
                     
                    axiosWithAuth()
-                    .get(`https://anywhere-fitness-tan.vercel.app/api/${props.role}/classes`)
+                    .get(`api/${props.role}/classes`)
                     .then(res =>
                         setUserClasses(res.data),
                         console.log('i got new classes'))
