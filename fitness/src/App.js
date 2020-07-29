@@ -5,6 +5,7 @@ import Login from './components/Login'
 import SignUp from './components/SignUp'
 import Instructor from './components/Instructor'
 import PrivateRoute from './components/PrivateRoute'
+import Client from './components/Client'
 function App() {
   return (
     <div className="App">
