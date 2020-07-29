@@ -1,58 +1,74 @@
-import React, { useState } from 'react'
-
-const initialFormData = {
-  _: 'formData',
-  username: '',
-  password: '',
-  email: '',
-  role: 'Select a Role'
-}
+import React from 'react'
+import { useForm } from 'react-hook-form'
+import axios from 'axios'
 
 function SignUp (){
-  const [formData, setFormData] = useState(initialFormData)
-
-  const UpdateFormData = e => {
-    const { name, value } = e.target
-    setFormData({...formData, [name]: value})
+  const { register, handleSubmit, errors } = useForm()
+  const onSubmit = regData => {
+    axios.post('https://afitness.herokuapp.com/api/auth/register',{
+      role: Number(regData.role),
+      first_name: 'none',
+      last_name: 'none',
+      email: regData.email,
+      username: regData.username,
+      password: regData.password
+    })
+    .then(res => {
+      console.log(res.data)
+    })
+    .catch(err => {
+      console.log(err)
+      debugger
+    })
   }
+
 
   return(
     <div className='signUp'>
-      <label>
-        username
+      <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type='text'
+          placeholder='Username'
           name='username'
-          value={formData.username}
-          onChange={UpdateFormData}
-        ></input>
-      </label>
-      <label>
-        password
+          ref={register({
+            required: 'Username required'
+          })}
+        />
         <input
           type='password'
+          placeholder='Password'
           name='password'
-          value={formData.password}
-          onChange={UpdateFormData}
-        ></input>
-      </label>
-      <label>
-        email
+          ref={register({
+            required: 'Password required',
+            minLength: {value: 8, message: 'Password must be at least 8 characters'}
+          })}
+        />
         <input
-          type='text'
+          type='email'
+          placeholder='Email'
           name='email'
-          value={formData.email}
-          onChange={UpdateFormData}
-        ></input>
-      </label>
-      <label>
-        role
-        <select defaultValue='Select a Role'>
+          ref={register({
+            required: 'Email required',
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: 'Invalid email address'
+            }
+          })}
+        />
+        <select name='role' defaultValue='Select a Role' ref={register({
+          required: 'Role required',
+          validate: value => value !== 'Select a Role' || 'Role required'
+        })}>
           <option disabled>Select a Role</option>
-          <option value='instructor'>Instructor</option>
-          <option value='student'>Student</option>
+          <option value={1}>Instructor</option>
+          <option value={2}>Student</option>
         </select>
-      </label>
+        <button>Submit</button>
+        {errors.username && <p id='usernameError'>{errors.username.message}</p>}
+        {errors.password && <p id='passwordError'>{errors.password.message}</p>}
+        {errors.email && <p id='emailError'>{errors.email.message}</p>}
+        {errors.role && <p id='roleError'>{errors.role.message}</p>}
+      </form>
     </div>
   )
 } export default SignUp
