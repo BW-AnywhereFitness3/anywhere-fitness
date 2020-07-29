@@ -12,7 +12,7 @@ const InstructorProfile = (props) => {
     useEffect(() => {
                     
                    axiosWithAuth()
-                    .get(`api/${props.role}/classes`)
+                    .get(`.GET to /api/client/classes/sessions/${props.id}`)
                     .then(res =>
                         setUserClasses(res.data),
                         console.log('i got new classes'))

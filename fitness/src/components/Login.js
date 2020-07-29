@@ -27,11 +27,7 @@ const onInputChange = evt => {
 
     const login = () => {
         axiosWithAuth()
-<<<<<<< HEAD
-            .post('http://anywhere-fitness-tan.vercel.app/api/login ', credentials)
-=======
             .post('api/auth/login ', credentials)
->>>>>>> 5b8d0d963a22433408b9603f41978d0bab2c4b8d
             .then((res) => {
                 window.localStorage.setItem('username', credentials.username);
                 window.localStorage.setItem('token', res.data.token);           
