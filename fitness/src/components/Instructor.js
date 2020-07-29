@@ -11,21 +11,36 @@ import Delete from './Delete';
 function Instructor (props) {
 
     const { newClass } = props
-
+    
     return (
         <div>
             <Card variant='outlined' > 
             <CardHeader
-            title={newClass.title}
-            subheader={newClass.location}/>
+            title={newClass.name}
+            subheader={newClass.type}/>
             <CardContent>
                 <Typography variant='body1' component='p'>
-                {newClass.date}
+                {newClass.start_time}
+                </Typography>
+                <Typography variant='body1' component='p'>
+                {newClass.duration}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                {newClass.description}
+                {newClass.intensity_level}
                 </Typography>
-                <div className="adminTools">
+                <Typography variant='body3' component='p'>
+                {newClass.address}
+                </Typography>
+                <Typography variant='body3' component='p'>
+                {newClass.city}, {newClass.postal}
+                </Typography>
+                <Typography variant='body1' component='p'>
+                {newClass.current_attendees}
+                </Typography>
+                <Typography variant='body1' component='p'>
+                {newClass.max_class}
+                </Typography>
+                <div className="instrucorAddClass">
                 <Edit newClaass={newClass}/>
                 <Delete newClass={newClass}/>
                 </div>   

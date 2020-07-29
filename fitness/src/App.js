@@ -12,7 +12,7 @@ function App() {
     <Route exact path ='/login'>
       <Login />
      </Route>
-     <Route exact path='/sign-up'>
+     <Route path='/sign-up'>
        <SignUp />
      </Route>
      <PrivateRoute component={Instructor} />
