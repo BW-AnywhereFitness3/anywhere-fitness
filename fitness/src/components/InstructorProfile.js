@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 import Instructor from "./Instructor"
 import AddClass from './AddClass'
 
-import './Profile.css'
-import Instructor from "./Instructor.js"
+
+
 
 
 

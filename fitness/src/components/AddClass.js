@@ -11,17 +11,17 @@ import Modal from 'react-modal'
 
 
 const initalClass = {
-    id: num,
+    id: '',
     name: '',
     type: '',
     start_time: '',
     duration: '',
-    intensity_level: num,
+    intensity_level: '',
     address: '',
     city: '',
-    postal: num,
-    current_attendees: num,
-    max_class: num,
+    postal: '',
+    current_attendees: '',
+    max_class: '',
 }
 
 const AddClass = (props) => {
@@ -43,7 +43,7 @@ const AddClass = (props) => {
         e.preventDefault();
         setModalOpen(false)
         props.addStory(newClass)
-        setNewStory(initalClass)
+        setNewClass(initalClass)
         
     }
 
