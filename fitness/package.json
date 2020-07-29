@@ -11,11 +11,8 @@
     "axios": "^0.19.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-<<<<<<< HEAD
     "react-redux": "^7.2.1",
-=======
     "react-hook-form": "^6.1.2",
->>>>>>> 68c7473466b46d397e16e562dc24b3ec9bc10a96
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "redux": "^4.0.5",

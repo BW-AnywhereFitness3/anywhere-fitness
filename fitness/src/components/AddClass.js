@@ -42,9 +42,8 @@ const AddClass = (props) => {
     const addNewClass = (e) => {
         e.preventDefault();
         setModalOpen(false)
-        props.addStory(newClass)
         setNewClass(initalClass)
-        
+        addClass(newClass)
     }
 
     const closeModal = () => {
@@ -89,7 +88,7 @@ const AddClass = (props) => {
                             onChange={onInputChange}
                             />
                         <TextField style={{marginTop:'1rem'}}
-                            type='time'
+                            type='minutes'
                             name='duration'
                             value={newClass.duration}
                             placeholder='Durration'
@@ -104,7 +103,7 @@ const AddClass = (props) => {
                             maxNumber='5'
                             />
                         <TextField style={{marginTop:'1rem'}}
-                            type='adress'
+                            type='text'
                             name='adress'
                             value={newClass.address}
                             placeholder='Street Adress'

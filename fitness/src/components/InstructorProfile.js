@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { axiosWithAuth } from "../utils/axiosWithAuth"
 import { connect } from 'react-redux'
-
 import Instructor from "./Instructor"
 import AddClass from './AddClass'
 
@@ -18,7 +17,7 @@ const InstructorProfile = (props) => {
     useEffect(() => {
                     
                    axiosWithAuth()
-                    .get(`https://anywhere-fitness-tan.vercel.app/api/${props.Instructor.id}/classes`)
+                    .get(`https://anywhere-fitness-tan.vercel.app/api/${props.role}/classes`)
                     .then(res =>
                         setUserClasses(res.data),
                         console.log('i got new classes'))
@@ -43,9 +42,9 @@ const InstructorProfile = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-    edit: state.editClassReducer.classes,
-    delete: state.deleteClassReducer.class,
-    add: state.addClassReducer.class
+    edit: state.editClassReducer.edit,
+    delete: state.deleteClassReducer.delete,
+    add: state.addClassReducer.add
     }
 }
 
