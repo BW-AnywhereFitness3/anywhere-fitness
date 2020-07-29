@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { addClass } from '../actions/addClass'
+import { addClass } from '../actions/actions'
 import { Fab, TextField, Button, Typography } from '@material-ui/core'
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add'
@@ -77,7 +77,7 @@ const AddClass = (props) => {
                             type='text'
                             name='type'
                             value={newClass.type}
-                            placeholder='What are you Teaching ex: Yoga, Cardio etc.'
+                            placeholder='What are you Teachinggit'
                             onChange={onInputChange}
                             />
                         <TextField style={{marginTop:'1rem'}}
@@ -154,4 +154,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {addClass})(AddClass)
-© 2020 GitHub, Inc.
