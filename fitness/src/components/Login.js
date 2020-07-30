@@ -30,7 +30,12 @@ const onInputChange = evt => {
             .post('api/auth/login ', credentials)
             .then((res) => {
                 window.localStorage.setItem('username', credentials.username);
-                window.localStorage.setItem('token', res.data.token);           
+                window.localStorage.setItem('token', res.data.token);  
+                if(credentials.role ===1 ){
+                  history.push('/instructor-profile')
+                }else{
+                 history.push('/')
+                }        
             })
             .catch(err => console.log(err))
         }    

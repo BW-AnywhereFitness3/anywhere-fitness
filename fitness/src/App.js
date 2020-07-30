@@ -6,17 +6,22 @@ import SignUp from './components/SignUp'
 import InstructorProfile from './components/InstructorProfile'
 import PrivateRoute from './components/PrivateRoute'
 import Client from './components/Client'
-function App() {
+import ClassList from './components/ClassList';
+function App(props) {
   return (
     <div className="App">
     <Switch>
     <Route exact path ='/login'>
       <Login />
      </Route>
-     <Route exact path='/sign-up'>
+     <Route path='/sign-up'>
        <SignUp />
      </Route>
-     <PrivateRoute exact path='/' component={InstructorProfile} />
+     <Route exact path='/'>
+      <Client />
+      </Route>
+   
+     <PrivateRoute exact path='/instructor-profile' component={InstructorProfile} />
      <PrivateRoute />
      </Switch>
     </div>

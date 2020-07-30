@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
-import { editNewClass } from '../actions/editClass'
+import { editClass } from '../actions/editClass'
 
 import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@material-ui/icons/Edit'
+
+
+
 
 const Edit = props => {
    const [ editing, setEditing ] = useState(false)
@@ -34,26 +37,46 @@ const Edit = props => {
         { editing && (
                 <form>
                   <input 
-                    name='title'
-                    value={classEdit.title}
+                    name='name'
+                    value={classEdit.name}
                     onChange={onInputChange}/>
                     <input 
-                    name='location'
-                    value={classEdit.location}
+                    name='type'
+                    value={classEdit.type}
                     onChange={onInputChange}/>
                     <input 
-                    name='date'
-                    value={classEdit.date}
+                    type='time'
+                    name='start_time'
+                    value={classEdit.start_time}
                     onChange={onInputChange}/>
                     <input 
-                    name='description'
-                    value={classEdit.description}
+                    type="number"
+                    name='duration'
+                    value={classEdit.duration}
                     onChange={onInputChange}/>
                     <input 
-                    name='storyImage'
-                    value={classEdit.storyImage}
+                    type='number'
+                    name='intensity_level'
+                    value={classEdit.intensity_level}
                     onChange={onInputChange}/>
-                  
+                    <input 
+                    name='address'
+                    value={classEdit.address}
+                    onChange={onInputChange}/>
+                     <input 
+                    name='city'
+                    value={classEdit.city}
+                    onChange={onInputChange}/>
+                     <input 
+                     type='number'
+                    name='postal'
+                    value={classEdit.postal}
+                    onChange={onInputChange}/>
+                   <input 
+                   type='number'
+                    name='max_class'
+                    value={classEdit.max_class}
+                    onChange={onInputChange}/>
                   <button onClick={edit} 
                   className="button">Save Edits</button>
               </form>
@@ -65,4 +88,4 @@ const Edit = props => {
     );
   };
 
-  export default connect(null, { editNewClass })(Edit);
+  export default connect(null, { editClass })(Edit);
