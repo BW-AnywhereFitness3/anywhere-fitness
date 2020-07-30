@@ -1,5 +1,9 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
+export const ADD_CLASS_START = 'ADD_CLASS_START';
+export const ADD_CLASS_SUCCESS = 'ADD_CLASS_SUCCESS';
+export const ADD_CLASS_FAIL = 'ADD_CLASS_FAIL';
+
 
 export const fetchUser = (userid) => dispatch => {
     axiosWithAuth()
@@ -24,14 +28,17 @@ export const fetchClasses = () => dispatch => {
 }
 
 export const addClass = ( newClass ) => dispatch => {
+    dispatch({type:ADD_CLASS_START})
+   
+   
     axiosWithAuth()
-    .post('/api/classes', newClass)
+    .post('api/instructor/classes', newClass)
     .then(res=>{
         console.log(res.data)
-        dispatch({ type: 'ADD_CLASS',
-        payload: res.data.newClass})
+       dispatch({type:ADD_CLASS_SUCCESS, payload:res.data})
     })
+
     .catch(err=>{
-        console.log(err)
+     dispatch({type: ADD_CLASS_FAIL, payload: err})
     })
 }

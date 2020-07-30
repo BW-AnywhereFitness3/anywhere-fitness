@@ -43,7 +43,7 @@ const AddClass = (props) => {
         e.preventDefault();
         setModalOpen(false)
         setNewClass(initalClass)
-        addClass(newClass)
+        props.addClass(newClass)
     }
 
     const closeModal = () => {
@@ -103,7 +103,6 @@ const AddClass = (props) => {
                             maxNumber='5'
                             />
                         <TextField style={{marginTop:'1rem'}}
-                            type='text'
                             name='adress'
                             value={newClass.address}
                             placeholder='Street Adress'
@@ -147,7 +146,7 @@ const AddClass = (props) => {
 const mapStateToProps = (state) => {
     
     return {
-        add: state.addClassReducer.stories,
+        add: state.addClassReducer.classes,
         success: state.addClassReducer.success_message
         
     }

@@ -10,7 +10,7 @@ const initalState = {
     isFetching: false
 }
 
-export const deleteClassReducer = ( state=initalState, action) => {
+export const deleteClassReducer = ( state = initalState, action) => {
     switch(action.type){
         case DELETE_CLASS_START:
             return {

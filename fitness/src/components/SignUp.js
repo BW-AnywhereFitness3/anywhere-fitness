@@ -1,9 +1,11 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
+import { Link, useHistory } from 'react-router-dom'
 
 function SignUp (){
   const { register, handleSubmit, errors } = useForm()
+  const history = useHistory()
   const onSubmit = regData => {
     axios.post('https://afitness.herokuapp.com/api/auth/register',{
       role: Number(regData.role),
@@ -20,6 +22,14 @@ function SignUp (){
       console.log(err)
       debugger
     })
+
+    .finally (()=>{
+      history.push('/login')
+    }
+
+    )
+     
+    
   }
 
 
@@ -63,7 +73,7 @@ function SignUp (){
           <option value={1}>Instructor</option>
           <option value={2}>Student</option>
         </select>
-        <button>Submit</button>
+      <button>Submit</button> 
         {errors.username && <p id='usernameError'>{errors.username.message}</p>}
         {errors.password && <p id='passwordError'>{errors.password.message}</p>}
         {errors.email && <p id='emailError'>{errors.email.message}</p>}

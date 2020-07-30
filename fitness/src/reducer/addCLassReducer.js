@@ -3,7 +3,7 @@ import {
     ADD_CLASS_START,
     ADD_CLASS_SUCCESS,
     ADD_CLASS_FAIL
-} from '../actions/addClass';
+} from '../actions/actions';
 
 const initalState = {
     classes: [],

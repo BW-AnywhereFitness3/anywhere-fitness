@@ -6,10 +6,10 @@ export const EDIT_CLASS_FAIL = 'EDIT_CLASS_FAIL'
 
 
 
-export const editNewClass = (newClass, classID) => dispatch => {
+export const editClass = (newClass, classID) => dispatch => {
     dispatch({ type: EDIT_CLASS_START, payload: newClass})
     axiosWithAuth()
-    .put(`${classID}`, newClass)
+    .put(`api/instructor/classes/${classID}`, newClass)
     .then(res => {
         console.log(res)
         dispatch({type: EDIT_CLASS_SUCCESS, payload: res.data})
