@@ -5,7 +5,7 @@ import {
 } from '../actions/editClass'
 
 const initalState = {
-    classes: [],
+    classes: {},
     error: '',
     isFetching: false
 }

@@ -54,7 +54,7 @@ const ClassList = props => {
                 <Typography  component='p'>
                 {newClass.max_class}
                 </Typography>
-                <Fab onClick={onClickEvent} className="ClientAddClass" style={{marginTop:'0.5rem'}}>
+                <Fab onClick={() => props.addItem(props.classes)} className="ClientAddClass" style={{marginTop:'0.5rem'}}>
                   <AddIcon />
                 </Fab>   
             </CardContent>
