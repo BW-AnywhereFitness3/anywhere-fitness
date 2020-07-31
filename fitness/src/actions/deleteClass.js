@@ -13,7 +13,7 @@ export const deleteClass = (classID) => dispatch => {
     .delete(`api/instructor/classes/${classID}`)
     .then(res => {
         console.log('i deleted the class!')
-        dispatch({type: DELETE_CLASS_SUCCESS, payload:{...res.data,classID}})
+        dispatch({type: DELETE_CLASS_SUCCESS, payload:classID})
     
     })
     .catch(err => {

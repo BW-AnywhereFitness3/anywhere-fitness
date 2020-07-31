@@ -11,7 +11,7 @@ import Delete from './Delete';
 
 function Instructor (props) {
 
-    const { newClass, edit } = props
+    const { newClass, setInstructorClasses } = props
     
     return (
         <div>
@@ -43,7 +43,7 @@ function Instructor (props) {
                 </Typography>
                 <div className="instrucorAddClass">
                 <Edit newClass={props.newClass}/>
-                <Delete newClass={props.newClass}/>
+                <Delete newClass={props.newClass} setInstructorClasses={setInstructorClasses} setDeleted={props.setDeleted}/>
                 </div>   
             </CardContent>
            </Card>
