@@ -11,7 +11,7 @@ export const editClass = (newClass, classID) => dispatch => {
     axiosWithAuth()
     .put(`api/instructor/classes/${classID}`, newClass)
     .then(res => {
-        console.log(res)
+        
         dispatch({type: EDIT_CLASS_SUCCESS, payload: res.data})
     })
     .catch(err => {

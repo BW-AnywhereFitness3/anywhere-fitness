@@ -6,7 +6,16 @@ import {
 } from '../actions/actions';
 
 const initalState = {
-    classes: '',
+   classes:{ name: '',
+    type: '',
+    start_time: '',
+    duration: '',
+    intensity_level: '',
+    address: '',
+    city: '',
+    postal: '',
+    current_attendees: '', // null if none
+    max_class: ''},
     error: '',
     isFetching: false,
     success_message: ''
@@ -22,7 +31,7 @@ export const addClassReducer = (state = initalState, action) => {
             };
         case ADD_CLASS_SUCCESS:
             return {
-                ...state,
+                ...state.classes,
                 classes: action.payload,
                 isFetching: false,
                 error: '',

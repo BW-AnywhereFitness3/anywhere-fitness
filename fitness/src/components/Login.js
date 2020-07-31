@@ -29,9 +29,9 @@ const onInputChange = evt => {
         axiosWithAuth()
             .post('api/auth/login ', credentials)
             .then((res) => {
-                window.localStorage.setItem('username', credentials.username);
+                window.localStorage.setItem('username', res.data.username);
                 window.localStorage.setItem('token', res.data.token);  
-                if(credentials.role ===1 ){
+                if(res.data.roleId ===1 ){
                   history.push('/instructor-profile')
                 }else{
                  history.push('/')

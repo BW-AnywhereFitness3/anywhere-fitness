@@ -7,15 +7,15 @@ export const ADD_CLASS_FAIL = 'ADD_CLASS_FAIL';
 
 
 
-export const addClass = ( newClass ) => dispatch => {
+export const addClass = ( state ) => dispatch => {
     dispatch({type:ADD_CLASS_START})
    
    
     axiosWithAuth()
-    .post('api/instructor/classes', newClass)
+    .post('/api/instructor/classes', state)
     .then(res=>{
-        console.log(res.data.data)
-       dispatch({type:ADD_CLASS_SUCCESS, payload:newClass})
+        
+       dispatch({type:ADD_CLASS_SUCCESS, payload:  state})
     })
 
     .catch(err=>{

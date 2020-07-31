@@ -11,7 +11,7 @@ import Delete from './Delete';
 
 function Instructor (props) {
 
-    const { newClass } = props
+    const { newClass, setInstructorClasses } = props
     
     return (
         <div>
@@ -20,30 +20,30 @@ function Instructor (props) {
             title={newClass.name}
             subheader={newClass.type}/>
             <CardContent>
-                <Typography variant='body1' component='p'>
+                <Typography  component='p'>
                 {newClass.start_time}
                 </Typography>
-                <Typography variant='body1' component='p'>
+                <Typography component='p'>
                 {newClass.duration}
                 </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Typography color="textSecondary" component="p">
                 {newClass.intensity_level}
                 </Typography>
-                <Typography variant='body3' component='p'>
+                <Typography component='p'>
                 {newClass.address}
                 </Typography>
-                <Typography variant='body3' component='p'>
+                <Typography  component='p'>
                 {newClass.city}, {newClass.postal}
                 </Typography>
-                <Typography variant='body1' component='p'>
+                <Typography  component='p'>
                 {newClass.current_attendees}
                 </Typography>
-                <Typography variant='body1' component='p'>
+                <Typography component='p'>
                 {newClass.max_class}
                 </Typography>
                 <div className="instrucorAddClass">
-                <Edit newClaass={newClass}/>
-                <Delete newClass={newClass}/>
+                <Edit newClass={props.newClass}/>
+                <Delete newClass={props.newClass} setInstructorClasses={setInstructorClasses} setDeleted={props.setDeleted}/>
                 </div>   
             </CardContent>
            </Card>

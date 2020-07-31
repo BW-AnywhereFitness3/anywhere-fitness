@@ -11,7 +11,6 @@ import Modal from 'react-modal'
 
 
 const initalClass = {
-    id: '',
     name: '',
     type: '',
     start_time: '',
@@ -104,9 +103,9 @@ const AddClass = (props) => {
                             />
                         <TextField style={{marginTop:'1rem'}}
                             type='text'
-                            name='adress'
+                            name='address'
                             value={newClass.address}
-                            placeholder='Street Adress'
+                            placeholder='Street Address'
                             onChange={onInputChange}
                             />
                               <TextField style={{marginTop:'1rem'}}
