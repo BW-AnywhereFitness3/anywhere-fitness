@@ -1,7 +1,70 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { TextField, Button, RadioGroup, Radio, FormControl, FormControlLabel, FormLabel } from '@material-ui/core'
+import { TextField, Button, RadioGroup, Radio, FormControl, FormControlLabel, Err } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 import { useHistory } from 'react-router-dom'
+
+const useStyles = makeStyles(theme => ({
+  bgDiv: {
+    background: '#EEEEEE',
+    width: '100vw',
+    height: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  formBGDiv: {
+    background: '#FFFFFF',
+    boxShadow: '0px 0px 30px -25px',
+    width: '800px',
+    height: '100vh',
+    padding: '5%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    [theme.breakpoints.down(900)]: {
+      width: '650px',
+    }
+  },
+  headerDiv: {
+    paddingLeft: '5%',
+    display: 'flex',
+    alignItems: 'center',
+    width: '100%',
+    marginBottom: '20%',
+  },
+  h1: {
+    fontSize: '2rem',
+    color: '#00F676',
+  },
+  img: {
+    width: '70px',
+    height: '70px',
+    marginRight: '5%',
+  },
+  form: {
+    marginBottom: '10%',
+    display: 'flex',
+    width: '100%',
+    [theme.breakpoints.down(550)]: {
+      flexDirection: 'column',
+    }
+  },
+  formColumnDiv: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
+  inputField: {
+    marginBottom: '10%',
+    [theme.breakpoints.down(550)]: {
+      marginBottom: '5%',
+    }
+  },
+  errorP: {
+    color: 'red',
+  }
+}))
 
 const initialFormData = {
   username: '',
@@ -110,113 +173,96 @@ function SignUp (){
     return passed
   }
 
+  const styles = useStyles()
   return(
-    <div className='signUp'>
-      <form onSubmit={onSubmit}>
-        <TextField
-          type='text'
-          label='USERNAME'
-          variant='outlined'
-          name='username'
-          value={formData.username}
-          onChange={onChange}
-          error={formErrors.username}
-          helperText={formErrors.username}
-        />
-        <TextField
-          type='text'
-          label='FIRST NAME'
-          variant='outlined'
-          name='first_name'
-          value={formData.first_name}
-          onChange={onChange}
-          error={formErrors.first_name}
-          helperText={formErrors.first_name}
-        />
-        <TextField
-          type='text'
-          label='LAST NAME'
-          variant='outlined'
-          name='last_name'
-          value={formData.last_name}
-          onChange={onChange}
-          error={formErrors.last_name}
-          helperText = {formErrors.last_name}
-        />
-        <TextField
-          type='email'
-          label='EMAIL'
-          variant='outlined'
-          name='email'
-          value={formData.email}
-          onChange={onChange}
-          error={formErrors.email}
-          helperText = {formErrors.email}
-        />
-        <TextField
-          type='password'
-          label='PASSWORD'
-          variant='outlined'
-          name='password'
-          value={formData.password}
-          onChange={onChange}
-          error={formErrors.password}
-          helperText = {formErrors.password}
-        />
-        <FormControl 
-          component='fieldset'
-          className='radioButtons'
-          error={formErrors.role}
-          helperText={formErrors.role}
-        >
-          <FormLabel component='legend'>ROLE</FormLabel>
-          <RadioGroup 
-            aria-label='ROLE'
-            name='role'
-            value={formData.role}
-            onChange={onChange}
-            error={true}
-          >
-            <FormControlLabel value={2} control={<Radio />} label='Member' />
-            <FormControlLabel value={1} control={<Radio />} label='Instructor' />
-          </RadioGroup>
-        </FormControl>
-        <Button variant='outlined' onClick={onSubmit}>Submit</Button>
-        {/* <input
-          type='password'
-          placeholder='Password'
-          name='password'
-          ref={register({
-            required: 'Password required',
-            minLength: {value: 8, message: 'Password must be at least 8 characters'}
-          })}
-        />
-        <input
-          type='email'
-          placeholder='Email'
-          name='email'
-          ref={register({
-            required: 'Email required',
-            pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              message: 'Invalid email address'
-            }
-          })}
-        />
-        <select name='role' defaultValue='Select a Role' ref={register({
-          required: 'Role required',
-          validate: value => value !== 'Select a Role' || 'Role required'
-        })}>
-          <option disabled>Select a Role</option>
-          <option value={1}>Instructor</option>
-          <option value={2}>Student</option>
-        </select>
-      <button>Submit</button> 
-        {errors.username && <p id='usernameError'>{errors.username.message}</p>}
-        {errors.password && <p id='passwordError'>{errors.password.message}</p>}
-        {errors.email && <p id='emailError'>{errors.email.message}</p>}
-        {errors.role && <p id='roleError'>{errors.role.message}</p>} */}
-      </form>
+    <div className={styles.bgDiv}>
+      <div className={styles.formBGDiv}>
+        <div className={styles.headerDiv}>
+          <img src={require('./images/logoGreen.png')} alt='logo' className={styles.img} />
+          <h1 className={styles.h1} >Create an account</h1>
+        </div>
+        <form onSubmit={onSubmit} className={styles.form}>
+          <div className={styles.formColumnDiv} >
+            <TextField
+              className={styles.inputField}
+              type='text'
+              label='USERNAME'
+              variant='outlined'
+              name='username'
+              value={formData.username}
+              onChange={onChange}
+              error={formErrors.username}
+              helperText={formErrors.username}
+            />
+            <TextField
+              className={styles.inputField}
+              type='email'
+              label='EMAIL'
+              variant='outlined'
+              name='email'
+              value={formData.email}
+              onChange={onChange}
+              error={formErrors.email}
+              helperText = {formErrors.email}
+            />
+            <TextField
+              className={styles.inputField}
+              type='password'
+              label='PASSWORD'
+              variant='outlined'
+              name='password'
+              value={formData.password}
+              onChange={onChange}
+              error={formErrors.password}
+              helperText = {formErrors.password}
+            />
+          </div>
+          <div className={styles.formColumnDiv} >
+            <TextField
+              className={styles.inputField}
+              type='text'
+              label='FIRST NAME'
+              variant='outlined'
+              name='first_name'
+              value={formData.first_name}
+              onChange={onChange}
+              error={formErrors.first_name}
+              helperText={formErrors.first_name}
+            />
+            <TextField
+              className={styles.inputField}
+              type='text'
+              label='LAST NAME'
+              variant='outlined'
+              name='last_name'
+              value={formData.last_name}
+              onChange={onChange}
+              error={formErrors.last_name}
+              helperText = {formErrors.last_name}
+            />
+            
+            <FormControl 
+              component='fieldset'
+              className={styles.inputField}
+              error={formErrors.role}
+              helperText={formErrors.role}
+            >
+              <RadioGroup 
+                aria-label='ROLE'
+                name='role'
+                value={formData.role}
+                onChange={onChange}
+                error={true}
+              >
+                <FormControlLabel value={2} control={<Radio />} label='Member' />
+                <FormControlLabel value={1} control={<Radio />} label='Instructor' />
+                <p className={styles.errorP}>{formErrors.role}</p>
+              </RadioGroup>
+            </FormControl>
+          </div>
+        </form>
+        <Button variant='outlined' onClick={onSubmit} size={'large'}>Submit</Button>
+      </div>
     </div>
   )
 } export default SignUp
