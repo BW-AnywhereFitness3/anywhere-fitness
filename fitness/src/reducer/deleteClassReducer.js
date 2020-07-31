@@ -14,20 +14,21 @@ export const deleteClassReducer = ( state = initalState, action) => {
     switch(action.type){
         case DELETE_CLASS_START:
             return {
-                ...state,
+                ...state.class,
+                class:{},
                 isFetching: true,
                 error: ''
             };
         case DELETE_CLASS_SUCCESS:
             return {
-                ...state,
+                ...state.class,
                 class: action.payload,
                 isFetching: false,
                 error: ''
             };
         case DELETE_CLASS_FAIL:
             return {
-                ...state,
+                ...state.class,
                 error: action.payload
             };
         default:
