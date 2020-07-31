@@ -38,7 +38,7 @@ const Client = props => {
   }
 
   return(
-    <div className='Client'>
+    <div className='Client' style={{display:'flex', alignContent:'center', flexWrap:'wrap', flexDirection:'column', width:'100%'}}>
       <form>
         <input
           type='text'
