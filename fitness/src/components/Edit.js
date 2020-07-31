@@ -12,7 +12,7 @@ import EditIcon from '@material-ui/icons/Edit'
 const Edit = props => {
    const [ editing, setEditing ] = useState(false)
    const [ classEdit, setClassEdit ] = useState(props.newClass)
-
+    
    const onInputChange = evt => {
     const name = evt.target.name
     const value = evt.target.value
@@ -87,5 +87,14 @@ const Edit = props => {
       </div>
     );
   };
+  const mapStateToProps = (state) => {
+    
+    return {
+        add: state.editClassReducer.classes,
+        success: state.addClassReducer.success_message
+        
+    }
+}
 
-  export default connect(null, { editClass })(Edit);
+
+  export default connect(mapStateToProps, { editClass })(Edit);

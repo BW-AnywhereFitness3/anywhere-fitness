@@ -16,14 +16,13 @@ function InstructorProfile (props) {
         //  /api/client/classes -> all available classes. can ad /:id for specific users/classes
                     
                    axiosWithAuth()
-                    .get(`/api/client/classes`)
+                    .get(`api/client/classes`)
                     .then(res =>{
-                        console.log(res.data)
+                        console.log(res.data.data)
                         setInstructorClasses(res.data.data)
-                        console.log(instructorClasses)
                         console.log('i got new classes')})
                     .catch(err => console.log(err))
-                }, [])
+                }, [props.add,props.edit,props.delete])
 
     return (
       <div>  
