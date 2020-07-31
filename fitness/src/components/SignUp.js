@@ -4,7 +4,6 @@ import { TextField, Button, RadioGroup, Radio, FormControl, FormControlLabel, Fo
 import { useHistory } from 'react-router-dom'
 
 const initialFormData = {
- // _: 'formData',
   username: '',
   first_name: '',
   last_name: '',
