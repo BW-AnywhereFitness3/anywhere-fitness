@@ -7,7 +7,7 @@ import AddClass from './AddClass'
 
 function InstructorProfile (props) {
 
-    const [ userClasses, setUserClasses ] = useState([])
+    const [ instructorClasses, setInstructorClasses ] = useState([])
         
     console.log(props)
 
@@ -16,14 +16,14 @@ function InstructorProfile (props) {
         //  /api/client/classes -> all available classes. can ad /:id for specific users/classes
                     
                    axiosWithAuth()
-                    .get(`/api/client/classes `)
+                    .get(`/api/client/classes`)
                     .then(res =>{
                         console.log(res.data)
-                        setUserClasses(res.data.data)
-                        console.log(userClasses)
+                        setInstructorClasses(res.data.data)
+                        console.log(instructorClasses)
                         console.log('i got new classes')})
                     .catch(err => console.log(err))
-                }, [props.edit, props.delete, props.add])
+                }, [])
 
     return (
       <div>  
@@ -35,7 +35,7 @@ function InstructorProfile (props) {
             <AddClass />
         </div>
         <div className='class-list'>
-            {userClasses.map(newClass => {
+            {instructorClasses.map(newClass => {
                 return <Instructor key={newClass.id} newClass={newClass}/>})
             }
         </div>
@@ -47,12 +47,11 @@ function InstructorProfile (props) {
 
 const mapStateToProps = (state) => {
     return {
-    edit: state.editClassReducer.newClass,
-    delete: state.deleteClassReducer.classes,
+    edit: state.editClassReducer.classes,
+    delete: state.deleteClassReducer.class,
     add: state.addClassReducer.classes
-    }
 }
-
+}
 
 
 export default connect(mapStateToProps, {})(InstructorProfile)

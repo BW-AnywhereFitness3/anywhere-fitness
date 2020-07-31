@@ -25,10 +25,12 @@ const initialErrorState = {
 function SignUp (){
   const [ formData, setFormData ] = useState(initialFormData)
   const [ formErrors, setFormErrors ] = useState(initialErrorState)
-  const {history } = useHistory()
+  const history  = useHistory()
   const onSubmit = () => {
+    
     console.log('submitting')
     if (validateFormData()){
+      console.log(formData)
       console.log('submitted to api')
        axios.post('https://afitness.herokuapp.com/api/auth/register',formData)
       .then(res => {
@@ -36,7 +38,7 @@ function SignUp (){
       })
       .catch(err => {
         console.log(err)
-        debugger
+      
       })
       .finally (()=>{
         history.push('/login')

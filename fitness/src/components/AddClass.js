@@ -81,7 +81,7 @@ const AddClass = (props) => {
                             onChange={onInputChange}
                             />
                         <TextField style={{marginTop:'1rem'}}
-                            type='time'
+                            type='text'
                             name='start_time'
                             value={newClass.start_time}
                             placeholder='Start Time'
@@ -103,6 +103,7 @@ const AddClass = (props) => {
                             maxNumber='5'
                             />
                         <TextField style={{marginTop:'1rem'}}
+                            type='text'
                             name='adress'
                             value={newClass.address}
                             placeholder='Street Adress'
